@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Practice from './components/practice/Practice';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+    {/* <Practice /> */}
+   </React.StrictMode>,
   document.getElementById('root')
 );
 

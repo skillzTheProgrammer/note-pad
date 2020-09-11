@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useEffect,useState} from 'react';
 import './App.css';
+import Practice from './components/practice/Practice';
+import Login from './components/practice/Login';
+
 
 function App() {
+
+  const [appState, setAppState] = useState({
+    isRegistered: false
+  })
+
+
+  useEffect(()=>{
+    const localUser = JSON.parse(sessionStorage.getItem("user"))
+
+    if(localUser !== null){
+      setAppState(
+        {
+          isRegistered:true
+        }
+      )
+    }
+
+    console.log(localUser)
+    console.log("localUser:",localUser)
+    // sessionStorage.removeItem('user')
+    
+  },[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!appState.isRegistered? <Practice />: null }
+      {appState.isRegistered?<Login/>:null}
     </div>
   );
 }
