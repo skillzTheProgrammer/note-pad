@@ -1,9 +1,10 @@
-import React,{useState} from 'react';
+import React,{useState, useRef} from 'react';
 
 const AddNotes = ({note, setNote}) => {
     
     let [title, setTitle] = useState("")
     let [description, setDescription] = useState("")
+    // const titles = useRef()
 
     const onClickHandler =()=>{
         const newNote = {
@@ -14,18 +15,21 @@ const AddNotes = ({note, setNote}) => {
 
         setNote([
             ...note,
-            {title: title,
+            {
+            title: title,
             description: description,
-            time: new Date().toLocaleTimeString()}
+            time: new Date().toLocaleTimeString()
+        }
 
         ])
         setDescription(description ="")
         setTitle(title = "")
+       
     }
     return (
         <div>
-            <input placeholder="Title" name="title" onChange={(e)=>setTitle(e.target.value)} /><br />
-            <textarea placeholder="Description" name="description" onChange={(e)=>setDescription(e.target.value)}></textarea><br />
+            <input  placeholder="Title" name="title" onChange={(e)=>setTitle(e.target.value)} /><br />
+            <textarea ref={'description'} placeholder="Description" name="description" onChange={(e)=>setDescription(e.target.value)}></textarea><br />
             <button onClick={onClickHandler}>Add Note</button>
         </div>
     );
