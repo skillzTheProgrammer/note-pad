@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import Note from './Note';
 import Searchbar from './Searchbar'
+import AddNotes from './AddNotes';
+import './style.css'
 
 const SearchApp = () => {
     const ourNotes =[
@@ -23,13 +25,16 @@ const SearchApp = () => {
 
     const [search, setSearch] = useState("")
 
-    const filteredNotes = ourNotes.filter((note,index)=>{
+    const [note, setNote] = useState(ourNotes)
+
+    const filteredNotes = note.filter((note)=>{
         return note.title.toLowerCase().includes(search.toLowerCase())
     })
 
     return (
         <div>
             <h1>SearchApp</h1>
+            <AddNotes note = {note} setNote ={setNote} />
             <Searchbar search={search} setSearch={setSearch} />
             <Note notes={filteredNotes} />
         </div>
