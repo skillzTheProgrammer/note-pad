@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import './App.css';
 import Practice from './components/practice/Practice';
 import Login from './components/practice/Login';
+import SearchApp from './components/search/SearchApp';
 
 
 function App() {
@@ -30,8 +31,9 @@ function App() {
 
   return (
     <div className="App">
-      {!appState.isRegistered? <Practice />: null }
-      {appState.isRegistered?<Login/>:null}
+      {/* {!appState.isRegistered? <Practice />: null }
+      {appState.isRegistered?<Login/>:null} */}
+      <SearchApp />
     </div>
   );
 }
